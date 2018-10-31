@@ -9,6 +9,7 @@ int myrandom (int i) {
 }
 
 string spooky() {
+	
 	std::vector<string> phrases;
 	// 🌑🌚
 	phrases.push_back("kill me 🙏");
@@ -36,5 +37,12 @@ string spooky() {
 
 int main() {
 	srand(time(0));
-    cout << spooky() << endl;
+	cout << "How many phrases do you want?" << endl;
+	int n;
+	cin >> n;
+	int x = (rand() % 3) + 1;
+	cout << "I don't care, there you have " << x << (x == 1 ? " phrase" : " phrases:") << endl;
+	for (int i = 0; i < x; i++) {
+		cout << spooky() << endl;
+	}
 }
