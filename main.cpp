@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <ctime>
+#include <cstdlib>
 
 using namespace std;
 
@@ -8,7 +10,7 @@ int myrandom (int i) {
 	return rand() % i;
 }
 
-string spooky() {
+pair<string, vector<string>> spooky() {
 	
 	std::vector<string> phrases;
 	// 🌑🌚
@@ -32,7 +34,22 @@ string spooky() {
 	phrases.push_back("i'll make you overdose tonight 💊");
 	
 	random_shuffle(phrases.begin(), phrases.end(), myrandom);
-	return phrases[0];
+	return {phrases[0], phrases};
+}
+
+string tic_tac(const vector<string>& strings, const string& selected) {
+	
+	int i = 0;
+	int millis = rand() % 400;
+	while (millis > 0)
+	{
+		cout << '\r';
+		cout << strings[(i++) % strings.size()] << endl;
+		
+		
+		
+		millis -= 10;
+	}
 }
 
 int main() {
@@ -42,7 +59,9 @@ int main() {
 	cin >> n;
 	int x = (rand() % 3) + 1;
 	cout << "I don't care, there you have " << x << (x == 1 ? " phrase" : " phrases:") << endl;
-	for (int i = 0; i < x; i++) {
-		cout << spooky() << endl;
-	}
+	auto res = spooky();
+	tic_tac(res.second, res.first);
+//	for (int i = 0; i < x; i++) {
+//		cout << spooky() << endl;
+//	}
 }
