@@ -45,10 +45,10 @@ string tic_tac(const vector<string>& strings, const string& selected) {
 	int millis = rand() % 400;
 	while (millis > 0)
 	{
-		cout << '\0x33';
-		cout << strings[(i++) % strings.size()] << endl;
+		cout << '\r';
+		cout << strings[(i++) % strings.size()];
 		
-		std::this_thread::sleep_for (std::chrono::seconds(millis));
+		std::this_thread::sleep_for (std::chrono::milliseconds(millis));
 		
 		millis -= 10;
 	}
