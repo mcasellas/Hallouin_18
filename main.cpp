@@ -3,6 +3,8 @@
 #include <algorithm>
 #include <ctime>
 #include <cstdlib>
+#include <thread>         // std::this_thread::sleep_for
+#include <chrono>         // std::chrono::seconds
 
 using namespace std;
 
@@ -43,10 +45,10 @@ string tic_tac(const vector<string>& strings, const string& selected) {
 	int millis = rand() % 400;
 	while (millis > 0)
 	{
-		cout << '\r';
+		cout << '\0x33';
 		cout << strings[(i++) % strings.size()] << endl;
 		
-		
+		std::this_thread::sleep_for (std::chrono::seconds(millis));
 		
 		millis -= 10;
 	}
